@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 329695572734699807}
   m_Layer: 0
   m_Name: Captain
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedCoefficient: 1
+  Position: {x: 0, y: 0}
 --- !u!143 &329695572734699779
 CharacterController:
   m_ObjectHideFlags: 0

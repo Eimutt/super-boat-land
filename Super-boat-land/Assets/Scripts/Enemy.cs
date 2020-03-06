@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	public Vector2 Position;
-	public EnemyManager EnemyManager { get; set; }
+	private Vector2 startPosition; //This should never change
+    public Vector2 Position; //This should never change
+    public EnemyManager EnemyManager { get; set; }
     public Settings Settings { get; set; }
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -21,4 +22,12 @@ public class Enemy : MonoBehaviour
 	public void UpdateEnemy(float deltaTime){
 		Position = transform.position;
 	}
+
+    /*
+     *  This is used for the AI to generate a random position.
+     */
+    public Vector2 getStartPosition()
+    {
+        return startPosition;
+    }
 }
