@@ -19,6 +19,8 @@ public class Settings : MonoBehaviour
     {
 		EnemyManager = GameObject.FindObjectsOfType<EnemyManager>()[0];
         //EnemyManager = GameObject.Find("EnemyManager");
+		CrewManager = GameObject.FindObjectsOfType<CrewManager>()[0];
+		Debug.Log(CrewManager);
 		//CrewManager = GameObject.Find("CrewManager");
     }
 
