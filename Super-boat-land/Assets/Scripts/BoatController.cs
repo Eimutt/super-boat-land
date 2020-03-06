@@ -5,9 +5,12 @@ using UnityEngine;
 public class BoatController : MonoBehaviour
 {
     public float speed = 2.0f;
+    private float harpoonForce = 9;
 
     private CharacterController controller;
+    public GameObject HarpoonPrefab;
     private Vector2 moveDirection;
+    private Vector2 latestNonZeroMoveDir;
 
     private SceneSwitch sceneSwitch;
 
@@ -22,11 +25,35 @@ public class BoatController : MonoBehaviour
     void Update()
     {
         moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (moveDirection.normalized != Vector2.zero)
+        {
+            latestNonZeroMoveDir = moveDirection;
+        }
         moveDirection *= speed;
 
         controller.Move(moveDirection * Time.deltaTime);
 
-         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("LandScene", true);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            shootHarpoon();
+        }
     }
+
+    // Shoot harpoon for fishing
+    void shootHarpoon()
+    {
+        Vector3 directionVector = Vector3.Normalize(latestNonZeroMoveDir);
+        GameObject harpoon = Instantiate(HarpoonPrefab, transform);
+
+        Vector3 dir = directionVector - harpoon.transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        harpoon.transform.parent = transform.parent;
+        harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
+    }
+
 }
