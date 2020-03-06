@@ -9,10 +9,13 @@ public class BoatController : MonoBehaviour
     private CharacterController controller;
     private Vector2 moveDirection;
 
+    private SceneSwitch sceneSwitch;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        sceneSwitch = GetComponent<SceneSwitch>();
     }
 
     // Update is called once per frame
@@ -22,5 +25,8 @@ public class BoatController : MonoBehaviour
         moveDirection *= speed;
 
         controller.Move(moveDirection * Time.deltaTime);
+
+         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+            sceneSwitch.SwitchScene("LandScene", true);
     }
 }
