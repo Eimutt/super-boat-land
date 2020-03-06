@@ -6,25 +6,31 @@ public class LandMovementHandler : MonoBehaviour
 {
     public float speedCoefficient;
     private CharacterController characterController;
+    private Vector2 moveDirection;
+    private SceneSwitch sceneSwitch;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        sceneSwitch = GetComponent<SceneSwitch>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        moveDirection *= speedCoefficient;
 
-        characterController.Move(new Vector3(speedCoefficient * horizontal, speedCoefficient * vertical, 0));
+        characterController.Move(moveDirection * Time.deltaTime);
 
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
             AttackCommand();
         else if (Input.GetKeyDown(KeyCode.Joystick1Button2))
             RecallCommand();
+
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+            sceneSwitch.SwitchScene("BoatScene", false);
     }
 
     void AttackCommand()
