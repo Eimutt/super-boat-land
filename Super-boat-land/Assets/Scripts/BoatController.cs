@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
+	[SerializeField]
     public float speed = 2.0f;
 
     private CharacterController controller;
@@ -29,4 +30,7 @@ public class BoatController : MonoBehaviour
          if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("LandScene", true);
     }
+	public void setSpeed(float newSpeed){
+		speed = newSpeed;
+	}
 }
