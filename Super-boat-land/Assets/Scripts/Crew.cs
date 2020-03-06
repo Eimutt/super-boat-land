@@ -31,31 +31,30 @@ public class Crew : MonoBehaviour
 		
 		Velocity += deltaTime * Acceleration;
 		// drag
-		Velocity = Velocity * 0.98f;
+		Velocity = Velocity * 0.90f;
         Position +=  0.5f * deltaTime * deltaTime * Acceleration + deltaTime * Velocity;
 		transform.position = Position;
         
     }
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
-		if (attacking){
+		//if (attacking){
 			foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
 			{
 				//Debug.Log(enemy);
 				
 				float distance = (enemy.Position - Position).magnitude;
-				if (distance < Settings.AttackRange){
+				if (distance < Settings.AttackRange && attacking){
 					force = enemy.Position - Position;
 					
+				} else {
+					force = Captain.getPosition() - Position;
 				}
 				
 			}
-		} else {
-			force = Captain.getPosition() - Position;
+		//} 
 		
-		}
-		
-		return force*2;
+		return force*10;
 	}
 	
 }
