@@ -63,6 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alertRadius: 1
+  patrolRadius: 0.4
+  patrolSpeed: 0.2
 --- !u!1102 &-1091865946175207643
 AnimatorState:
   serializedVersion: 5
@@ -159,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c6bfd40a1e449095c503c7faeb7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.6
   alertRadius: 1
 --- !u!1107 &8889629858169920383
 AnimatorStateMachine:
