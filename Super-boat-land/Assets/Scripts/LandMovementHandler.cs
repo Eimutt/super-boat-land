@@ -8,9 +8,14 @@ public class LandMovementHandler : MonoBehaviour
     private CharacterController characterController;
     private Vector2 moveDirection;
     private SceneSwitch sceneSwitch;
+	private Settings Settings;
+	public Vector2 Position;
     // Start is called before the first frame update
     void Start()
     {
+		//Settings = GetComponent<Settings>();
+		Settings = GameObject.FindObjectsOfType<Settings>()[0];
+		Debug.Log(Settings);
         characterController = GetComponent<CharacterController>();
         sceneSwitch = GetComponent<SceneSwitch>();
     }
@@ -24,22 +29,33 @@ public class LandMovementHandler : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0 )|| Input.GetKeyDown(KeyCode.X))
             AttackCommand();
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.C))
             RecallCommand();
 
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("BoatScene", false);
+		Position = transform.position;
     }
-
+	
+	public Vector2 getPosition(){
+		return Position;
+	}
+	
     void AttackCommand()
     {
+		foreach ( Crew crew in Settings.CrewManager.getCrew()){
+			crew.attacking = true;
+		}
         print("Attack command");
     }
 
     void RecallCommand()
     {
+		foreach ( Crew crew in Settings.CrewManager.getCrew()){
+			crew.attacking = false;
+		}
         print("Recall command");
     }
 }
