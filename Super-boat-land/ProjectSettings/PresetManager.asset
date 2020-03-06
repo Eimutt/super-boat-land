@@ -3,4 +3,13 @@
 --- !u!1386491679 &1
 PresetManager:
   m_ObjectHideFlags: 0
-  m_DefaultList: []
+  serializedVersion: 2
+  m_DefaultPresets:
+  - first:
+      m_NativeTypeID: 1006
+      m_ManagedTypePPtr: {fileID: 0}
+      m_ManagedTypeFallback: 
+    second:
+    - m_Preset: {fileID: 2655988077585873504, guid: 06f75e1c9c0944afbb6e08221cef7b7b,
+        type: 2}
+      m_Filter: 
