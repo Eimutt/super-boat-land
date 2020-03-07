@@ -30,4 +30,9 @@ public class Enemy : MonoBehaviour
     {
         return startPosition;
     }
+
+    public float getHealth()
+    {
+        return 7.0f;
+    }
 }
