@@ -31,8 +31,11 @@ public class Enemy : MonoBehaviour
         return startPosition;
     }
 
+    /*
+     *  TODO: Make this function return how much % hp enemy has left. 1.0 is max and 0.0 is min.
+     */
     public float getHealth()
     {
-        return 7.0f;
+        return 0.7f;
     }
 }

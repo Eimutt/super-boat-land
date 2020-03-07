@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour
 {
     public float AOEPower;
     public float attackPower; //For regular attacks.
+    public GameObject ParticleAOE;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,6 @@ public class Attack : MonoBehaviour
 
     public void AOEAttack()
     {
-
+        Instantiate(ParticleAOE, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
     }
 }

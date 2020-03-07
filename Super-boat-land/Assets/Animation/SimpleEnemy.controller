@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbbb5cd7105547379ab14f4184671ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeSpeed: 0
+  chargeDuration: 3
 --- !u!114 &-1440265814035247738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab702535061f4a4fa5825e241ac5908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertRadius: 1
+  alertRadius: 1.5
   patrolRadius: 0.4
   patrolSpeed: 0.2
   supriseMark: {fileID: 21300000, guid: 167fb8c3ebf5047c5b25379086f794d7, type: 3}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  alertRadius: 1
+  alertRadius: 1.5
 --- !u!1107 &8889629858169920383
 AnimatorStateMachine:
   serializedVersion: 5
