@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterPrefab: {fileID: 8234989048955263856, guid: 1c1c76a19ef074f4597b637ed6dd1b45,
     type: 3}
+  RopePrefab: {fileID: 2529169875431986955, guid: 207598525e2d840dda6cea57040afbf4,
+    type: 3}
 --- !u!50 &2002383884013636985
 Rigidbody2D:
   serializedVersion: 4

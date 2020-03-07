@@ -46,12 +46,13 @@ public class BoatController : MonoBehaviour
     void shootHarpoon()
     {
         Vector3 directionVector = Vector3.Normalize(latestNonZeroMoveDir);
+        print(directionVector);
         GameObject harpoon = Instantiate(HarpoonPrefab, transform);
 
-        Vector3 dir = directionVector - harpoon.transform.position;
+        Vector3 dir = directionVector;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+        harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         harpoon.transform.parent = transform.parent;
         harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
     }
