@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BoatController : MonoBehaviour {
+    [SerializeField]
     public float speed = 2.0f;
     private float harpoonForce = 9;
     private float maxHarpoonCD = 1;
@@ -58,4 +60,7 @@ public class BoatController : MonoBehaviour {
         harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
     }
 
+    public void setSpeed(float newSpeed) {
+        speed = newSpeed;
+    }
 }

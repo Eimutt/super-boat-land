@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AudioSource
   - Fish
+  - Enemy
   layers:
   - Default
   - TransparentFX
