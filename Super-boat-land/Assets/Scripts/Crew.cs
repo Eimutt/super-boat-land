@@ -11,11 +11,13 @@ public class Crew : MonoBehaviour
 	public Settings Settings { get; set; }
 	public bool attacking = false;
 	public LandMovementHandler Captain { get; set; }
+	private int health = 1000;
 	
     // Start is called before the first frame update
     void Start()
     {
 		//Captain = GetComponent<LandMovementHandler>();
+		//Captain = GameObject.FindObjectsOfType<LandMovementHandler>()[0];
 		Position = transform.position;
 		Debug.Log(Position);
 		Velocity = Vector2.zero;
