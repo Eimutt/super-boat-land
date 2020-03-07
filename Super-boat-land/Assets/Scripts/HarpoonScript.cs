@@ -49,7 +49,7 @@ public class HarpoonScript : MonoBehaviour {
                     print(currentFish);
                     rope.GetComponent<LineRenderer>().SetPosition(1, currentFish.transform.position);
                     catchingFish = true;
-                    //gameObject.GetComponent<SpriteRenderer>().
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 } else {
                     Destroy(rope);
                     Destroy(gameObject);
