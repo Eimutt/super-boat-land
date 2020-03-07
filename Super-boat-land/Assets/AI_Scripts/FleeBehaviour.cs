@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class FleeBehaviour : StateMachineBehaviour
 {
-    private Transform playerPos;
-    private Vector2 fleePosition;
-    private float angle;
-    private Vector2 moveDirection;
 
     private float lifeTime;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //escape here
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        fleePosition = -1 * playerPos.position * 1000;
-        moveDirection = new Vector2(fleePosition.x - animator.transform.position.x, fleePosition.y - animator.transform.position.y);
-        angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         lifeTime = 1.0f;
     }
 
      //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, fleePosition, 3 * Time.deltaTime);
-        animator.transform.rotation = Quaternion.AngleAxis(angle+180, Vector3.forward);
         lifeTime -= Time.deltaTime;
         if(lifeTime < 0.0f)
         {
