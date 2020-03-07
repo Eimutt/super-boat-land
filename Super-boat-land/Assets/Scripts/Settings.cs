@@ -12,9 +12,11 @@ public class Settings : MonoBehaviour
         set { m_AttackRange = value; }
     }
 	public Inventory Inventory { get; set;}
-	public EnemyManager EnemyManager { get; set; }
-	public CrewManager CrewManager { get; set; }
-	public static BoatController BoatController { get; set; }
+	//public EnemyManager EnemyManager { get; set; }
+	public EnemyManager EnemyManager;
+	public CrewManager CrewManager;
+	//public static BoatController BoatController { get; set; }
+	public static BoatController BoatController;
 	
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,9 @@ public class Settings : MonoBehaviour
 		//Inventory = GameObject.FindObjectsOfType<Inventory>()[0];
 		BoatController = GameObject.FindObjectsOfType<BoatController>()[0];
 		EnemyManager = GameObject.FindObjectsOfType<EnemyManager>()[0];
+		//EnemyManager = GetComponent<EnemyManager>();
+		//Debug.Log(BoatController);
+		//Debug.Log(EnemyManager);
 		CrewManager = GameObject.FindObjectsOfType<CrewManager>()[0];
 		Inventory = GetComponent<Inventory>();
 		
@@ -31,6 +36,7 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		//Debug.Log(BoatController);
+        //Debug.Log(EnemyManager);
     }
 }
