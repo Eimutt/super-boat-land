@@ -18,8 +18,10 @@ public class SquidBoss : MonoBehaviour
     private State state;
 
     public GameObject Tentacle;
-    public int tentacles;
+    public int tentacleCount;
     public float tentacleDelay;
+    private float tentacleTimer;
+    public float randomSpawnRange;
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +46,11 @@ public class SquidBoss : MonoBehaviour
             }
         } else
         {
-            int rand = Random.Range(0, 4);
+            int rand = Random.Range(0, 3);
             switch (rand)
             {
             case 0:
-                DoNothing();
+                TentacleAttack();
                 break;
             case 1:
                 Suck();
@@ -57,11 +59,18 @@ public class SquidBoss : MonoBehaviour
                 Blow();
                 break;
             case 3:
-                TentacleAttack();
+                DoNothing();
                 break;
             }
             isActive = true;
         }
+        tentacleTimer += Time.deltaTime * Random.Range(0.5f, 1.5f);
+        if(tentacleTimer > tentacleDelay)
+        {
+            SpawnTentacle();
+            tentacleTimer = 0;
+        }
+
     }
 
     void Suck()
@@ -89,8 +98,31 @@ public class SquidBoss : MonoBehaviour
 
     void TentacleAttack()
     {
+        print("tentacles");
+        for(int i = 0; i < tentacleCount; i++)
+        {
+            SpawnTentacle();
+        }
         
-        var tentacle = Instantiate(Tentacle);
+    }
+
+    void SpawnTentacle()
+    {
+        Vector3 spawnPos = boat.transform.position;
+        var tentacle = Instantiate(Tentacle, spawnPos, Quaternion.identity);
         tentacle.SetActive(true);
+
+        //Random number of extra random tentacles
+        int randomNumber = Random.Range(0, 3);
+        for(int i = 0; i <= randomNumber; i++)
+        {
+            spawnPos = boat.transform.position;
+            float randx = Random.Range(-randomSpawnRange, randomSpawnRange);
+            float randy = Random.Range(-randomSpawnRange, randomSpawnRange);
+            spawnPos.x += randx;
+            spawnPos.y += randy;
+            tentacle = Instantiate(Tentacle, spawnPos, Quaternion.identity);
+            tentacle.SetActive(true);
+        }
     }
 }

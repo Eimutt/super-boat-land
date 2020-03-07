@@ -23,7 +23,7 @@ public class Tentacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * Random.Range(0.8f, 1.2f);
         if(timer > attackDelay && !emerged)
         {
             Emerge();

@@ -295,50 +295,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d092a917a681644b1c4ee848ce98e0, type: 3}
---- !u!1 &886819862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 886819863}
-  - component: {fileID: 886819864}
-  m_Layer: 0
-  m_Name: TentacleArea
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &886819863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886819862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1749730795}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &886819864
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886819862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 7, y: 1.15, z: 1}
-  m_Center: {x: -2.5, y: 0, z: 0}
 --- !u!1 &960333507
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,7 +5117,7 @@ Transform:
   m_GameObject: {fileID: 1006262758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.41, y: -0.24817854, z: -0.18752962}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -5178,8 +5134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9736c1a3d597e46b0c3e136dd8f1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 4
-  attackDelay: 2
+  lifeTime: 2
+  attackDelay: 1
   tentacleSprite: {fileID: 21300000, guid: 48d4446fc394442e1a8fa7beb4d7176d, type: 3}
 --- !u!212 &1006262761
 SpriteRenderer:
@@ -10173,7 +10129,6 @@ Transform:
   m_Children:
   - {fileID: 960333508}
   - {fileID: 1715448012}
-  - {fileID: 886819863}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10241,5 +10196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroRamge: 0
   pauseTime: 0
-  attackTime: 5
+  attackTime: 4
   Tentacle: {fileID: 1006262758}
+  tentacleCount: 4
+  tentacleDelay: 1
+  randomSpawnRange: 2
