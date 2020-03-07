@@ -17,6 +17,10 @@ public class SquidBoss : MonoBehaviour
     private enum State { Pause, Suck, Blow}
     private State state;
 
+    public GameObject Tentacle;
+    public int tentacles;
+    public float tentacleDelay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +44,7 @@ public class SquidBoss : MonoBehaviour
             }
         } else
         {
-            int rand = Random.Range(0, 3);
-            print(rand);
+            int rand = Random.Range(0, 4);
             switch (rand)
             {
             case 0:
@@ -52,6 +55,9 @@ public class SquidBoss : MonoBehaviour
                 break;
             case 2:
                 Blow();
+                break;
+            case 3:
+                TentacleAttack();
                 break;
             }
             isActive = true;
@@ -79,5 +85,12 @@ public class SquidBoss : MonoBehaviour
     {
         blow.SetActive(false);
         suck.SetActive(false);
+    }
+
+    void TentacleAttack()
+    {
+        
+        var tentacle = Instantiate(Tentacle);
+        tentacle.SetActive(true);
     }
 }
