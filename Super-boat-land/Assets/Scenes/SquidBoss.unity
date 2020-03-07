@@ -221,6 +221,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 3
+--- !u!114 &360000805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360000803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bc165a8d3f53e4d942b3186a366dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &735869338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,8 +337,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960333507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.2, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1749730795}
   m_RootOrder: 0
@@ -349,7 +362,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &960333511
 MonoBehaviour:
@@ -5116,7 +5129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006262758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.41, y: -0.24817854, z: -0.18752962}
+  m_LocalPosition: {x: 1.41, y: -0.24817854, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5137,6 +5150,7 @@ MonoBehaviour:
   lifeTime: 2
   attackDelay: 1
   tentacleSprite: {fileID: 21300000, guid: 48d4446fc394442e1a8fa7beb4d7176d, type: 3}
+  tentacleDamage: 10
 --- !u!212 &1006262761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5198,7 +5212,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16, z: 0.2}
+  m_Size: {x: 0.16, y: 0.16, z: 0.16}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1685513949
 GameObject:
@@ -5333,8 +5347,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715448011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.2, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1749730795}
   m_RootOrder: 1
@@ -10088,7 +10102,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1715448017
 MeshFilter:
@@ -10109,6 +10123,7 @@ GameObject:
   - component: {fileID: 1749730795}
   - component: {fileID: 1749730796}
   - component: {fileID: 1749730797}
+  - component: {fileID: 1749730798}
   m_Layer: 0
   m_Name: SquidBoss
   m_TagString: Untagged
@@ -10201,3 +10216,17 @@ MonoBehaviour:
   tentacleCount: 4
   tentacleDelay: 1
   randomSpawnRange: 2
+  collisionDamage: 20
+--- !u!65 &1749730798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749730794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

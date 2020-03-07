@@ -23,6 +23,8 @@ public class SquidBoss : MonoBehaviour
     private float tentacleTimer;
     public float randomSpawnRange;
 
+    public int collisionDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,5 +126,11 @@ public class SquidBoss : MonoBehaviour
             tentacle = Instantiate(Tentacle, spawnPos, Quaternion.identity);
             tentacle.SetActive(true);
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        print("boat hit by squid");
+        boat.GetComponent<Boat>().TakeDamage(collisionDamage);
     }
 }

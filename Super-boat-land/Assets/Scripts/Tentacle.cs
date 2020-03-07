@@ -12,6 +12,7 @@ public class Tentacle : MonoBehaviour
     public Sprite tentacleSprite;
     private SpriteRenderer spriteRenderer;
     private bool damaged;
+    public int tentacleDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,7 @@ public class Tentacle : MonoBehaviour
         if (!damaged)
         {
             damaged = true;
-            print("Damage Boat");
+            other.GetComponent<Boat>().TakeDamage(tentacleDamage);
         }
 
     }
