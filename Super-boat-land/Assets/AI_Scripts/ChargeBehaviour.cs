@@ -2,40 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseBehaviour : StateMachineBehaviour
+public class ChargeBehaviour : StateMachineBehaviour
 {
-    private Transform playerPos;
-    public float speed;
-    public float alertRadius;
+    public float chargeDuration;
+    private float ogDuration;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        ogDuration = chargeDuration;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, playerPos.position, speed*Time.deltaTime);
-
-        float d = 0.0f;
-        d = Vector3.Distance(animator.transform.position, playerPos.transform.position);
-        if (d >= alertRadius)
+        chargeDuration -= Time.deltaTime;
+        Debug.Log(chargeDuration);
+        //Charges the attack for a few seconds before firing off.
+        if(chargeDuration < 0.0f)
         {
-            animator.SetBool("isFollowing", false);
+            animator.transform.GetComponent<Attack>().AOEAttack();
+            animator.SetBool("isCharging", false);
+            chargeDuration = int.MaxValue;
         }
 
-        if(animator.transform.GetComponent<Enemy>().getHealth() < 0.8f)
-        {
-            //Gives a certain chance to charge powerful attack.
-            animator.SetBool("isCharging", true);
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        chargeDuration = ogDuration;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
