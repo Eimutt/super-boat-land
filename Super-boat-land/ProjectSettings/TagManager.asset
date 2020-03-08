@@ -7,8 +7,9 @@ TagManager:
   - AudioSource
   - Fish
   - Enemy
-  - Harpoon
   - SquidBossTrigger
+  - Harpoon
+  - Bomb
   layers:
   - Default
   - TransparentFX

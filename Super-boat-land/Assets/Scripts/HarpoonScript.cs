@@ -16,7 +16,7 @@ public class HarpoonScript : MonoBehaviour {
 
     bool collidingWithFish = false;
     bool catchingFish = false;
-    GameObject currentFish;
+    GameObject currentCatch;
     // Start is called before the first frame update
     void Start() {
         print(boxCollider);
@@ -37,8 +37,14 @@ public class HarpoonScript : MonoBehaviour {
         currentLifeTime += Time.deltaTime;
 
         if (catchingFish) {
-            rope.GetComponent<LineRenderer>().SetPosition(1, currentFish.transform.position);
-            currentFish.GetComponent<Animator>().SetBool("isHooked", true);
+            rope.GetComponent<LineRenderer>().SetPosition(1, currentCatch.transform.position);
+            if(currentCatch.tag == "Bomb")
+            {
+                currentCatch.gameObject.GetComponent<Bomb>().Hook();
+            } else
+            {
+                currentCatch.GetComponent<Animator>().SetBool("isHooked", true);
+            }
         } else {
             if (currentLifeTime >= maxLifeTime) {
                 GameObject waterParticles = Instantiate(WaterPrefab, transform);
@@ -47,13 +53,12 @@ public class HarpoonScript : MonoBehaviour {
                 //audioSource.PlayOneShot(SplashSoundEffect);
 
                 if (collidingWithFish) {
-                    print(currentFish);
-                    rope.GetComponent<LineRenderer>().SetPosition(1, currentFish.transform.position);
+                    print(currentCatch);
+                    rope.GetComponent<LineRenderer>().SetPosition(1, currentCatch.transform.position);
                     catchingFish = true;
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 } else {
-                    Destroy(rope);
-                    Destroy(gameObject);
+                    DestroySelf();
                 }
             }
         }
@@ -63,23 +68,24 @@ public class HarpoonScript : MonoBehaviour {
         if(col.gameObject.tag == "SquidBossTrigger")
         {
             col.gameObject.GetComponent<bossTrigger>().StartBossFight();
-            Destroy(rope);
-            Destroy(gameObject);
+            DestroySelf();
+        } else if(col.gameObject.tag == "Bomb" && !catchingFish){
+            currentCatch = col.gameObject;
+            collidingWithFish = true;
         } else
         {
             if (!catchingFish)
             {
                 collidingWithFish = true;
-                currentFish = col.gameObject;
+                currentCatch = col.gameObject;
             }
         }
-
         //Debug.Log("GameObject1 collided with " + col.name);
     }
     void OnTriggerExit2D(Collider2D col) {
         if (!catchingFish) {
             collidingWithFish = false;
-            currentFish = null;
+            currentCatch = null;
         }
         //Debug.Log("GameObject1 collided with " + col.name);
     }
@@ -88,4 +94,27 @@ public class HarpoonScript : MonoBehaviour {
     {
         return rope;
     }
+
+    void DestroySelf()
+    {
+        Destroy(rope);
+        Destroy(gameObject);
+    }
+
+    public void TryDestroySelf()
+    {
+        if (catchingFish)
+        {
+            if(currentCatch.tag == "Bomb")
+            {
+                currentCatch.GetComponent<Bomb>().UnHook();
+            } else //Fish
+            {
+                currentCatch.GetComponent<fishController>().UnHook();
+            }
+            DestroySelf();
+        }
+    }
+
+
 }
