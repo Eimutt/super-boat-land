@@ -37,6 +37,9 @@ public class HarpoonScript : MonoBehaviour {
         currentLifeTime += Time.deltaTime;
 
         if (catchingFish) {
+            if(currentCatch == null) {
+                DestroySelf();
+            }
             rope.GetComponent<LineRenderer>().SetPosition(1, currentCatch.transform.position);
             if(currentCatch.tag == "Bomb")
             {
