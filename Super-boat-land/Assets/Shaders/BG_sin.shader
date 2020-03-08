@@ -4,6 +4,7 @@
     {
         _MainTex ("Texture", 2D) = "white" {}
         _GameTime ("GameTime", float) = 0
+        _Color ("Color", Color) = (0.0,0.0,0.0,1.0)
     }
     SubShader
     {
@@ -35,6 +36,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _Color;
             float _GameTime;
 
             v2f vert (appdata v)
@@ -63,7 +65,7 @@
 				fixed4 col = mainTex;
                 // apply fog
                 //UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                return col * _Color;
             }
             ENDCG
         }
