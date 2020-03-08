@@ -13,6 +13,7 @@ public class Tentacle : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool damaged;
     public int tentacleDamage;
+    public bool decorative;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class Tentacle : MonoBehaviour
         {
             Emerge();
         }
-        if(timer > lifeTime)
+        if(timer > lifeTime && !decorative)
         {
             Destroy(gameObject);
         }

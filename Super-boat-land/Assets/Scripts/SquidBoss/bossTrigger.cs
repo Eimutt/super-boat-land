@@ -5,11 +5,12 @@ using UnityEngine;
 public class bossTrigger : MonoBehaviour
 {
     public GameObject bossObject;
-    private GameObject playerBoat;
+    private Vector2 playerBoatPos;
     private bool active;
     public float spawnOffSet;
     private Vector3 targetPos;
     public float moveSpeed;
+    public GameObject tentaclePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +36,23 @@ public class bossTrigger : MonoBehaviour
 
     public void StartBossFight()
     {
-        playerBoat = GameObject.FindGameObjectWithTag("Player");
-        targetPos = playerBoat.transform.position;
+        playerBoatPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        targetPos = playerBoatPos;
         targetPos.x += spawnOffSet;
         active = true;
+        createArena();
+    }
+
+    void createArena()
+    {
+        float angle = 0;
+        Vector2 spawnPos;
+        for(int i = 0; i < 36; i++)
+        {
+            angle = i * 10 * Mathf.Deg2Rad;
+            spawnPos = playerBoatPos + new Vector2(Mathf.Cos(angle) * spawnOffSet, Mathf.Sin(angle) * spawnOffSet / 2);
+            var tentacle = Instantiate(tentaclePrefab, spawnPos, Quaternion.identity);
+            tentacle.SetActive(true);
+        }
     }
 }
