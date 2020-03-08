@@ -25,6 +25,8 @@ public class Settings : MonoBehaviour
 	public LandMovementHandler Captain;
 	//public static BoatController BoatController { get; set; }
 	public static BoatController BoatController;
+	public List<GameObject> allLandObjects;
+	
 	
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,19 @@ public class Settings : MonoBehaviour
 		//Debug.Log(EnemyManager);
 		CrewManager = GameObject.FindObjectsOfType<CrewManager>()[0];
 		Inventory = GetComponent<Inventory>();
+		var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		var crew = GameObject.FindGameObjectsWithTag("Crew");
+		allLandObjects.Add(Captain.gameObject);
+		foreach( GameObject go in enemies){
+			allLandObjects.Add(go);
+		}
+		foreach( GameObject go in crew){
+			allLandObjects.Add(go);
+		}
+		
+		foreach( GameObject go in allLandObjects){
+			Debug.Log(go);
+		}
 		
 		
     }
