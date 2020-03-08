@@ -31,7 +31,22 @@ public class Enemy : MonoBehaviour
 
     public void UpdateEnemy(float deltaTime)
     {
+		
         Position = transform.position;
+		foreach (Crew crew in Settings.CrewManager.getCrew())
+		{
+
+			if ((this.transform.position-crew.transform.position).magnitude < Settings.HurtRange && !crew.Equals(null)){
+				
+				//Debug.Log("trying to attack");
+				if(crew.damage(10)){
+					Destroy(crew.gameObject);
+					//enemiesKilled.Add(enemy);
+					//enemiesInRange.Remove(enemy);
+				}
+			}
+
+		}
     }
 
     /*

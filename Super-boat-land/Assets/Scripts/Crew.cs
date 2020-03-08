@@ -11,7 +11,7 @@ public class Crew : MonoBehaviour
 	public Settings Settings { get; set; }
 	public bool attacking = false;
 	public LandMovementHandler Captain { get; set; }
-	private int health = 1000;
+	public int health;
 	
 	
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class Crew : MonoBehaviour
 		//Debug.Log(Position);
 		Velocity = Vector2.zero;
 		Acceleration = Vector2.zero;
+		health = 1000;
         
     }
 
@@ -31,7 +32,7 @@ public class Crew : MonoBehaviour
     {
 		Acceleration = Vector2.zero;
 		Acceleration += getAttackForce();
-		Acceleration += getSeparationForce();
+		//Acceleration += getSeparationForce();
 		Velocity += deltaTime * Acceleration;
 		// drag
 		Velocity = Velocity * 0.90f;
@@ -115,5 +116,25 @@ public class Crew : MonoBehaviour
 		
 		return force;
 	}
+	// Call this function to damage crew. If the crew dies this returns true and the attacker should call Destroy(crewobject.gameObject)
+	public bool damage(int damage)
+    {
+        setHealth(getHealth() - damage);
+        if (getHealth() <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+	public int getHealth()
+    {
+        return health;
+    }
+	private void setHealth(int newHealth)
+    {
+        health = newHealth;
+        //healthBar.SetHealth(health / maxHealth);
+    }
+
 	
 }
