@@ -41,7 +41,7 @@ public class fishController : MonoBehaviour
         negativeEscapeSpeed = escapeSpeed * -1.0f;
         doubleEscapeSpeed = escapeSpeed * 2.0f;
 
-        escapeRadius = 1.5f;
+        escapeRadius = 3.5f;
         captureRadius = 0.2f;
     }
 
@@ -156,6 +156,7 @@ public class fishController : MonoBehaviour
      */
     void killFish()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Harpoon").GetComponent<HarpoonScript>().getRope());
         Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
         playerPos.GetComponent<BoatController>().speed = playerPos.GetComponent<BoatController>().ogSpeed;
         Destroy(this.gameObject);
