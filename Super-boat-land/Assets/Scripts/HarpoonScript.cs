@@ -42,7 +42,7 @@ public class HarpoonScript : MonoBehaviour {
             if (currentLifeTime >= maxLifeTime) {
                 GameObject waterParticles = Instantiate(WaterPrefab, transform);
                 waterParticles.transform.parent = transform.parent;
-                waterParticles.transform.rotation = Quaternion.Euler(0, 0, 0);
+                waterParticles.transform.rotation = Quaternion.Euler(-90, 0, 0);
                 //audioSource.PlayOneShot(SplashSoundEffect);
 
                 if (collidingWithFish) {

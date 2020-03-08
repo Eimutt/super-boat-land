@@ -36,6 +36,7 @@ public class BoatController : MonoBehaviour {
         moveDirection *= speed;
 
         controller.Move(moveDirection * Time.deltaTime);
+        //controller.Move(new Vector2(0, 0.00101f) * Mathf.Sin(Time.time * 2));
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("LandScene", true);
