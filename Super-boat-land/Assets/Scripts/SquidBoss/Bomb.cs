@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     private bool hooked;
     public float hookSpeed;
     private GameObject player;
+    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Bomb : MonoBehaviour
 
     public void Explode()
     {
-
+        Instantiate(explosionEffect, gameObject.transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
