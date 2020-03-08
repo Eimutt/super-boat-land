@@ -8,6 +8,9 @@ TagManager:
   - Fish
   - Enemy
   - Cactus
+  - SquidBossTrigger
+  - Harpoon
+  - Bomb
   layers:
   - Default
   - TransparentFX

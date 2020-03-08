@@ -6,8 +6,9 @@ using UnityEngine;
 public class BoatController : MonoBehaviour {
     [SerializeField]
     public float speed = 2.0f;
+    public float ogSpeed;
     private float harpoonForce = 9;
-    private float maxHarpoonCD = 1;
+    private float maxHarpoonCD = 0;
     private float currentHarpoonCD = 0;
 
     private CharacterController controller;
@@ -17,10 +18,12 @@ public class BoatController : MonoBehaviour {
 
     private SceneSwitch sceneSwitch;
 
+    private GameObject harpoon;
     // Start is called before the first frame update
     void Start() {
         controller = GetComponent<CharacterController>();
         sceneSwitch = GetComponent<SceneSwitch>();
+        ogSpeed = speed;
     }
 
     // Update is called once per frame
@@ -49,16 +52,22 @@ public class BoatController : MonoBehaviour {
 
     // Shoot harpoon for fishing
     void shootHarpoon() {
-        Vector3 directionVector = Vector3.Normalize(latestNonZeroMoveDir);
-        print(directionVector);
-        GameObject harpoon = Instantiate(HarpoonPrefab, transform);
+        if (harpoon != null)
+        {
+            harpoon.GetComponent<HarpoonScript>().TryDestroySelf();
+        } else
+        {
+            Vector3 directionVector = Vector3.Normalize(latestNonZeroMoveDir);
+            print(directionVector);
+            harpoon = Instantiate(HarpoonPrefab, transform);
 
-        Vector3 dir = directionVector;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Vector3 dir = directionVector;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        harpoon.transform.parent = transform.parent;
-        harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
+            harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            harpoon.transform.parent = transform.parent;
+            harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
+        }
     }
 
     public void setSpeed(float newSpeed) {

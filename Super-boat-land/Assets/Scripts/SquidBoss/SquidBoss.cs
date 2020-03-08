@@ -28,7 +28,7 @@ public class SquidBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boat = GameObject.Find("boat");
+        boat = GameObject.FindGameObjectWithTag("Player");
         blow = gameObject.transform.Find("BlowWind").gameObject;
         suck = gameObject.transform.Find("SuckWind").gameObject;
         isActive = false;

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 683470665}
   m_Layer: 0
   m_Name: boat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  ogSpeed: 0
   HarpoonPrefab: {fileID: 2002383884013636966, guid: c6f20ae26f05746bc964db5dc309dcb1,
     type: 3}
 --- !u!114 &8634191135008169227

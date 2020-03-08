@@ -13,12 +13,16 @@ public class Tentacle : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool damaged;
     public int tentacleDamage;
+    public bool decorative;
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider.enabled = false;
+        if (!decorative)
+        {
+            boxCollider.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -29,7 +33,7 @@ public class Tentacle : MonoBehaviour
         {
             Emerge();
         }
-        if(timer > lifeTime)
+        if(timer > lifeTime && !decorative)
         {
             Destroy(gameObject);
         }
@@ -38,8 +42,11 @@ public class Tentacle : MonoBehaviour
     void Emerge()
     {
         emerged = true;
-        boxCollider.enabled = true;
         spriteRenderer.sprite = tentacleSprite;
+        if (!decorative)
+        {
+            boxCollider.enabled = true;
+        }
     }
 
     void OnTriggerStay(Collider other)
