@@ -161,4 +161,12 @@ public class fishController : MonoBehaviour
         playerPos.GetComponent<BoatController>().speed = playerPos.GetComponent<BoatController>().ogSpeed;
         Destroy(this.gameObject);
     }
+
+    public void UnHook()
+    {
+        playerPos.GetComponent<BoatController>().speed = playerPos.GetComponent<BoatController>().ogSpeed;
+        catched = false;
+        animator.SetBool("isHooked", false);
+        escape = true;
+    }
 }
