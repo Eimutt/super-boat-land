@@ -13,6 +13,7 @@ public class Crew : MonoBehaviour
 	public LandMovementHandler Captain { get; set; }
 	private int health = 1000;
 	
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class Crew : MonoBehaviour
     {
 		Acceleration = Vector2.zero;
 		Acceleration += getAttackForce();
-		
+		Acceleration += getSeparationForce();
 		Velocity += deltaTime * Acceleration;
 		// drag
 		Velocity = Velocity * 0.90f;
@@ -41,7 +42,23 @@ public class Crew : MonoBehaviour
 	Enemy target;
 	//public List<Enemy> enemiesInRange = new List<Enemy>();
 	//public List<Enemy> enemiesKilled = new List<Enemy>();
-	
+	Vector2 getSeparationForce(){
+		
+		Vector2 separationForce = Vector2.zero;
+		
+		foreach (GameObject neighbor in Settings.allLandObjects)
+        {
+			float distance = (neighbor.transform.position - transform.position).magnitude;
+			
+			if (distance < Settings.CrewManager.SeparationRadius && distance >0.05f)
+			{
+				Vector2 xyPosition1 = new Vector2(transform.position.x,transform.position.y); 
+				Vector2 xyPosition2 = new Vector2(neighbor.transform.position.x, neighbor.transform.position.y);
+				separationForce += ((Settings.CrewManager.SeparationRadius - distance) / distance) * (xyPosition1-xyPosition2);
+			}
+		}
+		return separationForce*150;
+	}
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
 		//float targetRange = Settings.AttackRange;
@@ -88,11 +105,15 @@ public class Crew : MonoBehaviour
 		
 		if (Captain.enemiesInRange.Count == 0 || !attacking){
 			force = Captain.getPosition() - Position;
+			
+			force*=5;
+		} else {
+			force *= 10;
 		}
 		
 		//Debug.Log(Captain.enemiesInRange.Count);
 		
-		return force*10;
+		return force;
 	}
 	
 }

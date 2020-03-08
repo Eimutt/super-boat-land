@@ -6,7 +6,7 @@ public class CrewManager : MonoBehaviour
 {
     // Start is called before the first frame update
 	private List<Crew> crewList;
-	
+	public float SeparationRadius = 0.15f;
     void Start()
     {
 		var captain = GameObject.FindObjectsOfType<LandMovementHandler>();
