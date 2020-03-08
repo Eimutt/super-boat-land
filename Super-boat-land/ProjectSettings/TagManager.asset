@@ -10,6 +10,7 @@ TagManager:
   - SquidBossTrigger
   - Harpoon
   - Bomb
+  - AOE_Effect
   - Tentacle
   layers:
   - Default
@@ -59,4 +60,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Shader
+    uniqueID: 671883911
     locked: 0
