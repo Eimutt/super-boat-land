@@ -38,6 +38,7 @@ public class HarpoonScript : MonoBehaviour {
 
         if (catchingFish) {
             rope.GetComponent<LineRenderer>().SetPosition(1, currentFish.transform.position);
+            currentFish.GetComponent<Animator>().SetBool("isHooked", true);
         } else {
             if (currentLifeTime >= maxLifeTime) {
                 GameObject waterParticles = Instantiate(WaterPrefab, transform);
@@ -70,7 +71,6 @@ public class HarpoonScript : MonoBehaviour {
             {
                 collidingWithFish = true;
                 currentFish = col.gameObject;
-                currentFish.GetComponent<Animator>().SetBool("isHooked", true);
             }
         }
 
@@ -82,5 +82,10 @@ public class HarpoonScript : MonoBehaviour {
             currentFish = null;
         }
         //Debug.Log("GameObject1 collided with " + col.name);
+    }
+
+    public GameObject getRope()
+    {
+        return rope;
     }
 }
