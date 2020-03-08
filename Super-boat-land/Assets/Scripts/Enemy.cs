@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 			isAlive = false;
 			Settings.Captain.enemyKilled(this.gameObject);
 			
-			Destroy(this.gameObject);
+			//Destroy(this.gameObject);
 			return true;
 		}
 		return false;

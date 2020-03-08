@@ -41,13 +41,15 @@ public class LandMovementHandler : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("BoatScene", false);
 		Position = transform.position;
+		List<Enemy> enemiesNotNull = Settings.EnemyManager.GetEnemies();
 		
+		enemiesNotNull.RemoveAll(item => item == null);
 		
 		//Targeting code
 		foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
 		{
 
-			float distance = (enemy.Position - Position).magnitude;
+			float distance = (enemy.transform.position - transform.position).magnitude;
 			if (distance < Settings.AttackRange){
 				if (!enemiesInRange.Contains(enemy)){
 					enemiesInRange.Add(enemy);	
