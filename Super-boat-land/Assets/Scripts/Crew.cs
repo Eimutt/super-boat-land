@@ -19,7 +19,7 @@ public class Crew : MonoBehaviour
 		//Captain = GetComponent<LandMovementHandler>();
 		//Captain = GameObject.FindObjectsOfType<LandMovementHandler>()[0];
 		Position = transform.position;
-		Debug.Log(Position);
+		//Debug.Log(Position);
 		Velocity = Vector2.zero;
 		Acceleration = Vector2.zero;
         
@@ -39,13 +39,14 @@ public class Crew : MonoBehaviour
         
     }
 	Enemy target;
-	List<Enemy> enemiesInRange = new List<Enemy>();
+	//public List<Enemy> enemiesInRange = new List<Enemy>();
+	//public List<Enemy> enemiesKilled = new List<Enemy>();
 	
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
 		//float targetRange = Settings.AttackRange;
-		float distanceToEnemy = Settings.AttackRange;
-		
+		float distanceToEnemy = Settings.AttackRange+1.0f;
+		/*
 		foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
 		{
 
@@ -55,27 +56,39 @@ public class Crew : MonoBehaviour
 			} else {enemiesInRange.Remove(enemy);}
 			
 		}
-		
-		foreach (Enemy enemy in enemiesInRange)
+		*/
+		foreach (Enemy enemy in Captain.getEnemiesInRange())
 		{
-			if ((enemy.Position - Position).magnitude < distanceToEnemy){
-				distanceToEnemy = (enemy.Position - Position).magnitude;
-				if (attacking ){
+			//Debug.Log(enemy);
+			//bool targetIsAlive = enemy.getIsAlive();
+			//Debug.Log(Captain.getEnemiesInRange());
+			if ((enemy.transform.position - transform.position).magnitude <= distanceToEnemy && !enemy.Equals(null)){
+				distanceToEnemy = (enemy.transform.position - transform.position).magnitude;
+				if (attacking){
 					force = enemy.Position - Position;
 				} else {
 					force = Captain.getPosition() - Position;
 				}
 			}
+			//Debug.Log(distanceToEnemy);
+			//Debug.Log(Settings.HurtRange);
+			if (distanceToEnemy<Settings.HurtRange && !Captain.enemiesKilled.Contains(enemy.gameObject) && !enemy.Equals(null)){
+				
+				//Debug.Log("trying to attack");
+				if(enemy.damage(10)){
+					//enemiesKilled.Add(enemy);
+					//enemiesInRange.Remove(enemy);
+				}
+			}
 			
-			
-		
 			
 		}
 		
-		if (enemiesInRange.Count == 0){
+		if (Captain.enemiesInRange.Count == 0 || !attacking){
 			force = Captain.getPosition() - Position;
 		}
-
+		
+		//Debug.Log(Captain.enemiesInRange.Count);
 		
 		return force*10;
 	}
