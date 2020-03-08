@@ -26,8 +26,9 @@ public class bossTrigger : MonoBehaviour
 
             if (transform.position == targetPos)
             {
-                bossObject.transform.position = transform.position;
-                bossObject.SetActive(true);
+                var boss = Instantiate(bossObject);
+                boss.transform.position = transform.position;
+                boss.SetActive(true);
                 print("start boss fightt");
                 Destroy(gameObject);
             }
@@ -45,14 +46,17 @@ public class bossTrigger : MonoBehaviour
 
     void createArena()
     {
-        float angle = 0;
+        float angleDeg = 0;
+        float angleRad = 0;
         Vector2 spawnPos;
         for(int i = 0; i < 36; i++)
         {
-            angle = i * 10 * Mathf.Deg2Rad;
-            spawnPos = playerBoatPos + new Vector2(Mathf.Cos(angle) * spawnOffSet, Mathf.Sin(angle) * spawnOffSet / 2);
+            angleDeg = i * 10;
+            angleRad = angleDeg * Mathf.Deg2Rad;
+            spawnPos = playerBoatPos + new Vector2(Mathf.Cos(angleRad) * spawnOffSet, Mathf.Sin(angleRad) * spawnOffSet / 2);
             var tentacle = Instantiate(tentaclePrefab, spawnPos, Quaternion.identity);
             tentacle.SetActive(true);
+            tentacle.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, angleDeg + 90);
         }
     }
 }
