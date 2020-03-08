@@ -72,8 +72,7 @@ public class HarpoonScript : MonoBehaviour {
         } else if(col.gameObject.tag == "Bomb" && !catchingFish){
             currentCatch = col.gameObject;
             collidingWithFish = true;
-        } else if (col.gameObject.tag == "Fish")
-        {
+        } else if (col.gameObject.tag == "Fish") {
             if (!catchingFish)
             {
                 collidingWithFish = true;

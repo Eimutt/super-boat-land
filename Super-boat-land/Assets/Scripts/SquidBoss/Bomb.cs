@@ -8,7 +8,6 @@ public class Bomb : MonoBehaviour
     public float hookSpeed;
     private GameObject player;
     public GameObject explosionEffect;
-    // Start is called before the first frame update
     void Start()
     {
         
