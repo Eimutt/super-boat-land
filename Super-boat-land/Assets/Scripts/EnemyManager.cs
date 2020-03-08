@@ -24,14 +24,14 @@ public class EnemyManager : MonoBehaviour
 			//enemy.Settings = settings[0];
             //enemy.EnemyManager = this;
 			enemyList.Add(enemy);
-			Debug.Log(enemy);
+			//Debug.Log(enemy);
 			
 			Vector2 randomVector = new Vector2(UnityEngine.Random.Range(-0.5f, 1.0f), UnityEngine.Random.Range(-0.5f, 1.0f));
 			realEnemies.Add(Instantiate(enemy, randomVector, new Quaternion(0,0,0,0)));
 			
 		}
 		
-		Debug.Log(settings[0]);
+		//Debug.Log(settings[0]);
 		//Debug.Log(enemyList);
 		//Debug.Log(GetEnemies());
     }
