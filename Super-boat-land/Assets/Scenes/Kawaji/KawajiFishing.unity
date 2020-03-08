@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503558629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46, y: -0.07829428, z: -3.187176}
+  m_LocalPosition: {x: 1.281, y: 0.499, z: -3.187176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -480,12 +480,12 @@ PrefabInstance:
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.33
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: -0.259
       objectReference: {fileID: 0}
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
@@ -682,6 +682,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Harpoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002383884013636966, guid: c6f20ae26f05746bc964db5dc309dcb1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2002383884013636986, guid: c6f20ae26f05746bc964db5dc309dcb1,
         type: 3}
