@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 		health = newHealth;
 		
 	}
-	private int getHealth (){
+	public int getHealth (){
 		return health;
 	}
 	public bool getIsAlive(){
