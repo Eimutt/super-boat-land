@@ -5045,6 +5045,7 @@ MonoBehaviour:
   attackDelay: 2
   tentacleSprite: {fileID: 21300000, guid: 48d4446fc394442e1a8fa7beb4d7176d, type: 3}
   tentacleDamage: 10
+  decorative: 0
 --- !u!212 &1006262761
 SpriteRenderer:
   m_ObjectHideFlags: 0
