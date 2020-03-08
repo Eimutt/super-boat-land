@@ -65,10 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8292294803177438924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dcf770fbc3a1a846a51bddb19acb6ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e88677d113ca4418431048873cdea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.3
+  force: 0.5
   push: 0
   sourceDif: {x: 1.6, y: 0, z: 0}
   extraForce: {x: 0, y: 0, z: 0}
@@ -4978,13 +4978,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8292294803484896336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dcf770fbc3a1a846a51bddb19acb6ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e88677d113ca4418431048873cdea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 3
+  force: 1.5
   push: 1
   sourceDif: {x: 1.6, y: 0, z: 0}
-  extraForce: {x: -1, y: 0, z: 0}
+  extraForce: {x: 1, y: 0, z: 0}
 --- !u!198 &8292294803484896341
 ParticleSystem:
   m_ObjectHideFlags: 0
