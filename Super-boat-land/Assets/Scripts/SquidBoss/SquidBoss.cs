@@ -25,6 +25,8 @@ public class SquidBoss : MonoBehaviour
 
     public int collisionDamage;
 
+    public int health = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,13 +79,11 @@ public class SquidBoss : MonoBehaviour
 
     void Suck()
     {
-        print("sucking");
         suck.SetActive(true);
     }
 
     void Blow()
     {
-        print("blowing");
         blow.SetActive(true);
     }
 
@@ -130,7 +130,33 @@ public class SquidBoss : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("boat hit by squid");
-        boat.GetComponent<Boat>().TakeDamage(collisionDamage);
+        if(other.tag == "Player")
+        {
+            other.GetComponent<Boat>().TakeDamage(collisionDamage);
+        } else if (other.tag == "Bomb")
+        {
+            other.GetComponent<Bomb>().Explode();
+            TakeDamage(1);
+        }
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= 1;
+        if(health <= 0)
+        {
+            DestroyTentacles();
+            Destroy(gameObject);
+
+        }
+    }
+
+    void DestroyTentacles()
+    {
+        GameObject[] tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
+        foreach(GameObject tentacle in tentacles)
+        {
+            Destroy(tentacle);
+        }
     }
 }

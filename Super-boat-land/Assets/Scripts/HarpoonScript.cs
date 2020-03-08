@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HarpoonScript : MonoBehaviour {
     // lifetime in  seconds
-    private float maxLifeTime = 1.5f;
+    private float maxLifeTime = 0.5f;
     private float currentLifeTime = 0f;
-    private BoxCollider2D boxCollider;
+    private BoxCollider boxCollider;
     public GameObject WaterPrefab;
     public GameObject RopePrefab;
     public AudioClip SplashSoundEffect;
@@ -20,7 +20,7 @@ public class HarpoonScript : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         print(boxCollider);
-        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider>();
         rope = Instantiate(RopePrefab);
         playerBoat = GameObject.FindGameObjectWithTag("Player");
         rope.transform.parent = transform.parent;
@@ -64,7 +64,7 @@ public class HarpoonScript : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
+    void OnTriggerEnter(Collider col) {
         if(col.gameObject.tag == "SquidBossTrigger")
         {
             col.gameObject.GetComponent<bossTrigger>().StartBossFight();
@@ -72,8 +72,7 @@ public class HarpoonScript : MonoBehaviour {
         } else if(col.gameObject.tag == "Bomb" && !catchingFish){
             currentCatch = col.gameObject;
             collidingWithFish = true;
-        } else
-        {
+        } else if (col.gameObject.tag == "Fish") {
             if (!catchingFish)
             {
                 collidingWithFish = true;
@@ -82,7 +81,7 @@ public class HarpoonScript : MonoBehaviour {
         }
         //Debug.Log("GameObject1 collided with " + col.name);
     }
-    void OnTriggerExit2D(Collider2D col) {
+    void OnTriggerExit(Collider col) {
         if (!catchingFish) {
             collidingWithFish = false;
             currentCatch = null;

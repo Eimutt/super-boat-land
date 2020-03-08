@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
     private bool hooked;
     public float hookSpeed;
     private GameObject player;
-    // Start is called before the first frame update
+    public GameObject explosionEffect;
     void Start()
     {
         
@@ -24,19 +24,18 @@ public class Bomb : MonoBehaviour
 
     public void Hook()
     {
-        print("Bomb caught");
         hooked = true;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void UnHook()
     {
-        print("Bomb released");
         hooked = false;
     }
 
     public void Explode()
     {
-
+        Instantiate(explosionEffect, gameObject.transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
