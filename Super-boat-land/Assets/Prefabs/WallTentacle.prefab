@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallTentacle
       objectReference: {fileID: 0}
+    - target: {fileID: 1074048133209608263, guid: 54cee9e844fb72341af38109fdf3c6e1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tentacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1074048133209608262, guid: 54cee9e844fb72341af38109fdf3c6e1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54cee9e844fb72341af38109fdf3c6e1, type: 3}

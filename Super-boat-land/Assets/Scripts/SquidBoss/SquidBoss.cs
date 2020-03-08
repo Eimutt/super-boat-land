@@ -145,7 +145,18 @@ public class SquidBoss : MonoBehaviour
         health -= 1;
         if(health <= 0)
         {
+            DestroyTentacles();
             Destroy(gameObject);
+
+        }
+    }
+
+    void DestroyTentacles()
+    {
+        GameObject[] tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
+        foreach(GameObject tentacle in tentacles)
+        {
+            Destroy(tentacle);
         }
     }
 }
