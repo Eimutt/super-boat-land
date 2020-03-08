@@ -62,6 +62,7 @@ public class HarpoonScript : MonoBehaviour {
         if (!catchingFish) {
             collidingWithFish = true;
             currentFish = col.gameObject;
+            currentFish.GetComponent<Animator>().SetBool("isHooked", true);
         }
 
         //Debug.Log("GameObject1 collided with " + col.name);
