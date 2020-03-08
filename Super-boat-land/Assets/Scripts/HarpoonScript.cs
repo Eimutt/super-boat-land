@@ -70,6 +70,7 @@ public class HarpoonScript : MonoBehaviour {
             {
                 collidingWithFish = true;
                 currentFish = col.gameObject;
+                currentFish.GetComponent<Animator>().SetBool("isHooked", true);
             }
         }
 

@@ -213,6 +213,8 @@ GameObject:
   - component: {fileID: 1503558631}
   - component: {fileID: 1503558630}
   - component: {fileID: 1503558632}
+  - component: {fileID: 1503558633}
+  - component: {fileID: 1503558634}
   m_Layer: 0
   m_Name: Fish1
   m_TagString: Untagged
@@ -278,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503558629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46, y: -0.07829428, z: -3.187176}
+  m_LocalPosition: {x: -1.41, y: -0.58, z: -3.187176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,6 +312,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17102516, y: 0.11922622}
   m_EdgeRadius: 0
+--- !u!95 &1503558633
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503558629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de2bf4b9fa83b42359b9255fba5b5232, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1503558634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503558629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0436fffc94d4cd786974555a3297af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  escapeSpeed: 0.3
+  animator: {fileID: 1503558633}
 --- !u!1 &1719013219
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,12 +480,12 @@ PrefabInstance:
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04478973
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.045877725
+      value: -0.259
       objectReference: {fileID: 0}
     - target: {fileID: 8192253897748763310, guid: 925e8ab3bac9545fbac26e2f0244f069,
         type: 3}
@@ -647,6 +682,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Harpoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002383884013636966, guid: c6f20ae26f05746bc964db5dc309dcb1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2002383884013636986, guid: c6f20ae26f05746bc964db5dc309dcb1,
         type: 3}

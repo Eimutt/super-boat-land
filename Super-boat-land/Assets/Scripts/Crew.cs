@@ -45,7 +45,8 @@ public class Crew : MonoBehaviour
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
 		//float targetRange = Settings.AttackRange;
-		float distanceToEnemy = Settings.AttackRange+1.0f;
+		float distanceToEnemy = Settings.AttackRange+0.1f;
+		
 		/*
 		foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
 		{
@@ -62,7 +63,7 @@ public class Crew : MonoBehaviour
 			//Debug.Log(enemy);
 			//bool targetIsAlive = enemy.getIsAlive();
 			//Debug.Log(Captain.getEnemiesInRange());
-			if ((enemy.transform.position - transform.position).magnitude <= distanceToEnemy && !enemy.Equals(null)){
+			if ((enemy.transform.position - Captain.transform.position).magnitude <= distanceToEnemy && !enemy.Equals(null)){
 				distanceToEnemy = (enemy.transform.position - transform.position).magnitude;
 				if (attacking){
 					force = enemy.Position - Position;
@@ -76,11 +77,12 @@ public class Crew : MonoBehaviour
 				
 				//Debug.Log("trying to attack");
 				if(enemy.damage(10)){
+					Destroy(enemy.gameObject);
 					//enemiesKilled.Add(enemy);
 					//enemiesInRange.Remove(enemy);
 				}
 			}
-			
+			distanceToEnemy = Settings.AttackRange+0.1f;
 			
 		}
 		

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BoatController : MonoBehaviour {
     [SerializeField]
     public float speed = 2.0f;
+    public float ogSpeed;
     private float harpoonForce = 9;
     private float maxHarpoonCD = 1;
     private float currentHarpoonCD = 0;
@@ -21,6 +22,7 @@ public class BoatController : MonoBehaviour {
     void Start() {
         controller = GetComponent<CharacterController>();
         sceneSwitch = GetComponent<SceneSwitch>();
+        ogSpeed = speed;
     }
 
     // Update is called once per frame
