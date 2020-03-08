@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - Enemy
   - Harpoon
+  - SquidBossTrigger
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class CrewManager : MonoBehaviour
 {
     // Start is called before the first frame update
 	private List<Crew> crewList;
+	
     void Start()
     {
 		var captain = GameObject.FindObjectsOfType<LandMovementHandler>();
@@ -13,7 +14,7 @@ public class CrewManager : MonoBehaviour
 		var settings = GameObject.FindObjectsOfType<Settings>();
         crewList = new List<Crew>();
         var crews = GameObject.FindObjectsOfType<Crew>();
-		Debug.Log(crewList);
+		//Debug.Log(crewList);
         foreach (var crew in crews)
         {
 			crew.Captain = captain[0];

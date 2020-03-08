@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HarpoonScript : MonoBehaviour {
     // lifetime in  seconds
-    private float maxLifeTime = 0.5f;
+    private float maxLifeTime = 1.5f;
     private float currentLifeTime = 0f;
     private BoxCollider2D boxCollider;
     public GameObject WaterPrefab;
@@ -26,7 +26,7 @@ public class HarpoonScript : MonoBehaviour {
         rope.transform.parent = transform.parent;
         rope.GetComponent<LineRenderer>().SetPosition(0, playerBoat.transform.position);
         rope.GetComponent<LineRenderer>().SetPosition(1, transform.position);
-        audioSource = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
+        //audioSource = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,8 +42,8 @@ public class HarpoonScript : MonoBehaviour {
             if (currentLifeTime >= maxLifeTime) {
                 GameObject waterParticles = Instantiate(WaterPrefab, transform);
                 waterParticles.transform.parent = transform.parent;
-                waterParticles.transform.rotation = Quaternion.Euler(0, 0, 0);
-                audioSource.PlayOneShot(SplashSoundEffect);
+                waterParticles.transform.rotation = Quaternion.Euler(-90, 0, 0);
+                //audioSource.PlayOneShot(SplashSoundEffect);
 
                 if (collidingWithFish) {
                     print(currentFish);
@@ -59,10 +59,19 @@ public class HarpoonScript : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (!catchingFish) {
-            collidingWithFish = true;
-            currentFish = col.gameObject;
-            currentFish.GetComponent<Animator>().SetBool("isHooked", true);
+        if(col.gameObject.tag == "SquidBossTrigger")
+        {
+            col.gameObject.GetComponent<bossTrigger>().StartBossFight();
+            Destroy(rope);
+            Destroy(gameObject);
+        } else
+        {
+            if (!catchingFish)
+            {
+                collidingWithFish = true;
+                currentFish = col.gameObject;
+                currentFish.GetComponent<Animator>().SetBool("isHooked", true);
+            }
         }
 
         //Debug.Log("GameObject1 collided with " + col.name);
