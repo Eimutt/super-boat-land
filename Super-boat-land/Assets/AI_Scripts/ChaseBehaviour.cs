@@ -24,6 +24,12 @@ public class ChaseBehaviour : StateMachineBehaviour
         {
             animator.SetBool("isFollowing", false);
         }
+
+        if(animator.transform.GetComponent<Enemy>().getHealth() < 0.8f)
+        {
+            //Gives a certain chance to charge powerful attack.
+            animator.SetBool("isCharging", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

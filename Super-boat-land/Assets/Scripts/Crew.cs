@@ -38,23 +38,44 @@ public class Crew : MonoBehaviour
 		transform.position = Position;
         
     }
+	Enemy target;
+	List<Enemy> enemiesInRange = new List<Enemy>();
+	
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
-		//if (attacking){
-			foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
-			{
-				//Debug.Log(enemy);
-				
-				float distance = (enemy.Position - Position).magnitude;
-				if (distance < Settings.AttackRange && attacking){
+		//float targetRange = Settings.AttackRange;
+		float distanceToEnemy = Settings.AttackRange;
+		
+		foreach (Enemy enemy in Settings.EnemyManager.GetEnemies())
+		{
+
+			float distance = (enemy.Position - Position).magnitude;
+			if (distance < Settings.AttackRange){
+			enemiesInRange.Add(enemy);	
+			} else {enemiesInRange.Remove(enemy);}
+			
+		}
+		
+		foreach (Enemy enemy in enemiesInRange)
+		{
+			if ((enemy.Position - Position).magnitude < distanceToEnemy){
+				distanceToEnemy = (enemy.Position - Position).magnitude;
+				if (attacking ){
 					force = enemy.Position - Position;
-					
 				} else {
 					force = Captain.getPosition() - Position;
 				}
-				
 			}
-		//} 
+			
+			
+		
+			
+		}
+		
+		if (enemiesInRange.Count == 0){
+			force = Captain.getPosition() - Position;
+		}
+
 		
 		return force*10;
 	}

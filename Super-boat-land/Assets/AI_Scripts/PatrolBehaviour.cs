@@ -8,6 +8,7 @@ public class PatrolBehaviour : StateMachineBehaviour
     public float alertRadius;
     public float patrolRadius; 
     public float patrolSpeed;
+    public Sprite supriseMark;
 
     private bool patrollingTowardsPoint;
     private Vector2 patrolTowardsPoint; //The point that the enemy is patrolling towards.
