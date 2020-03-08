@@ -24,14 +24,12 @@ public class Bomb : MonoBehaviour
 
     public void Hook()
     {
-        print("Bomb caught");
         hooked = true;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void UnHook()
     {
-        print("Bomb released");
         hooked = false;
     }
 

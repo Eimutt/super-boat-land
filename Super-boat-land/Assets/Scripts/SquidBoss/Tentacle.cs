@@ -51,7 +51,7 @@ public class Tentacle : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (!damaged)
+        if (!damaged && other.tag == "Player")
         {
             damaged = true;
             other.GetComponent<Boat>().TakeDamage(tentacleDamage);

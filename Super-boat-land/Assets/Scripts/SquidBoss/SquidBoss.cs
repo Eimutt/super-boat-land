@@ -77,13 +77,11 @@ public class SquidBoss : MonoBehaviour
 
     void Suck()
     {
-        print("sucking");
         suck.SetActive(true);
     }
 
     void Blow()
     {
-        print("blowing");
         blow.SetActive(true);
     }
 
@@ -130,7 +128,6 @@ public class SquidBoss : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("boat hit by squid");
         boat.GetComponent<Boat>().TakeDamage(collisionDamage);
     }
 }
