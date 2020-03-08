@@ -11,6 +11,7 @@ TagManager:
   - Harpoon
   - Bomb
   - AOE_Effect
+  - Tentacle
   layers:
   - Default
   - TransparentFX

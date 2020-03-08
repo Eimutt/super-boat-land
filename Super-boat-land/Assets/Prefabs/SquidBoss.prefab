@@ -4900,6 +4900,8 @@ MonoBehaviour:
   tentacleDelay: 0.7
   randomSpawnRange: 2
   collisionDamage: 20
+  health: 3
+  bomb: {fileID: 436680791899837351, guid: 6694a1dd91e09f048b90814d5986fe88, type: 3}
 --- !u!65 &8292294803444938599
 BoxCollider:
   m_ObjectHideFlags: 0

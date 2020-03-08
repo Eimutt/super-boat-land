@@ -21,5 +21,19 @@ public class Boat : MonoBehaviour
     {
         print("Boat takes " + damage + " damage!");
         health -= damage;
+        if (health <= 0)
+        {
+            print("you died");
+            gameObject.GetComponent<SceneSwitch>().ResetScene();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Bomb")
+        {
+            other.GetComponent<Bomb>().Explode();
+            TakeDamage(20);
+        }
     }
 }
