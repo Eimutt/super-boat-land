@@ -27,6 +27,8 @@ public class SquidBoss : MonoBehaviour
 
     public int health = 3;
 
+    public GameObject bomb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,7 @@ public class SquidBoss : MonoBehaviour
             }
         } else
         {
-            int rand = Random.Range(0, 3);
+            int rand = Random.Range(0, 6);
             switch (rand)
             {
             case 0:
@@ -63,7 +65,13 @@ public class SquidBoss : MonoBehaviour
                 Blow();
                 break;
             case 3:
-                DoNothing();
+                SpawnBomb();
+                break;
+            case 4:
+                SpawnBomb();
+                break;
+            case 5:
+                SpawnBomb();
                 break;
             }
             isActive = true;
@@ -126,6 +134,13 @@ public class SquidBoss : MonoBehaviour
             tentacle = Instantiate(Tentacle, spawnPos, Quaternion.identity);
             tentacle.SetActive(true);
         }
+    }
+
+    void SpawnBomb()
+    {
+        Vector3 spawnPos = boat.transform.position;
+        var bombObj = Instantiate(bomb);
+        bombObj.GetComponent<Bomb>().SetCurve(transform.position, (spawnPos + transform.position) / 2 + new Vector3(0, 3f, 0), spawnPos);
     }
 
     void OnTriggerEnter(Collider other)
