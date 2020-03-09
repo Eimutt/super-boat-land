@@ -22,8 +22,7 @@ public class flowerController : MonoBehaviour
     {
         if (hit.transform.tag == "Player")
         {
-            SceneManager.LoadScene("GrassLand");
-            Debug.Log("SADSD");
+            SceneManager.LoadScene("GrassLandFinal");
         }
     }
 }
