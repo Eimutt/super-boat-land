@@ -1263,12 +1263,12 @@ PrefabInstance:
     - target: {fileID: 8634191135008169222, guid: 80386e4cf801a4c4caaf716a9df630ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26595235
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 8634191135008169222, guid: 80386e4cf801a4c4caaf716a9df630ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.805157
+      value: -12.48
       objectReference: {fileID: 0}
     - target: {fileID: 8634191135008169222, guid: 80386e4cf801a4c4caaf716a9df630ac,
         type: 3}
@@ -6508,6 +6508,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3332117225559429840, guid: 4d740226d79f14eed9f21fc9e6fc812f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3332117225559429841, guid: 4d740226d79f14eed9f21fc9e6fc812f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6577,6 +6582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: island1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332117225559429871, guid: 4d740226d79f14eed9f21fc9e6fc812f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DesertIsland
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d740226d79f14eed9f21fc9e6fc812f, type: 3}

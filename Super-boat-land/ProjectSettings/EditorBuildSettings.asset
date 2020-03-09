@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LandScene.unity
     guid: f6d5ecf3b49a4304f904916c88677dcb
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/KawajiSea.unity
+    guid: 5f63641e465094189bc1c8de50f3333b
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/KawajiDesert.unity
+    guid: aec61930395c7484a88e0f369521bec9
   m_configObjects: {}

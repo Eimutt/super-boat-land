@@ -111,4 +111,10 @@ public class LandMovementHandler : MonoBehaviour {
         }
         print("Recall command");
     }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "GoToBoat") {
+            sceneSwitch.SwitchScene("KawajiSea", true);
+        }
+    }
 }
