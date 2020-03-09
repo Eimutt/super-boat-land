@@ -21,7 +21,7 @@ public class ChargeBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         chargeDuration -= Time.deltaTime;
-        Debug.Log(chargeDuration);
+        //Debug.Log(chargeDuration);
         if(chargeDuration/ogDuration<0.90f && !charge)
         {
 
@@ -40,7 +40,7 @@ public class ChargeBehaviour : StateMachineBehaviour
         if (chargeDuration < 0.0f)
         {
             chargeRingCopy.SetActive(false);
-            animator.transform.GetComponent<Attack>().AOEAttack();
+            //animator.transform.GetComponent<Attack>().AOEAttack();
             animator.SetBool("isCharging", false);
             chargeDuration = int.MaxValue;
         }

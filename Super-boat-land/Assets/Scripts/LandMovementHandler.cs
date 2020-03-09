@@ -54,6 +54,12 @@ public class LandMovementHandler : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("BoatScene", false);
         Position = transform.position;
+		foreach (Enemy enemy in enemiesInRange)
+		{
+			
+			Debug.Log(enemy);
+		}
+		enemiesInRange.RemoveAll(item => item == null);
     }
 
     public Vector2 getPosition() {
@@ -61,6 +67,7 @@ public class LandMovementHandler : MonoBehaviour {
     }
 
     void AttackCommand() {
+		enemiesInRange.RemoveAll(item => item == null);
         foreach (Crew crew in Settings.CrewManager.getCrew()) {
             crew.attacking = true;
         }
@@ -81,13 +88,12 @@ public class LandMovementHandler : MonoBehaviour {
 
             //Debug.Log(Settings.AttackRange);
         }
+		
         enemiesInRange.RemoveAll(item => item == null);
-        /*
-		foreach (Enemy enemy in enemiesInRange)
-		{
-			Debug.Log(enemy);
-		}
-		*/
+		enemiesInRange.RemoveAll(item => item.Equals(null));
+        
+		
+		
 
         foreach (GameObject enemy in enemiesKilled) {
             //Debug.Log(enemy);
