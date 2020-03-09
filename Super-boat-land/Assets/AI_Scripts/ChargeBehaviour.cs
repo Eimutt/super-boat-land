@@ -40,7 +40,7 @@ public class ChargeBehaviour : StateMachineBehaviour
         if (chargeDuration < 0.0f)
         {
             chargeRingCopy.SetActive(false);
-            //animator.transform.GetComponent<Attack>().AOEAttack();
+            animator.transform.GetComponent<Attack>().AOEAttack();
             animator.SetBool("isCharging", false);
             chargeDuration = int.MaxValue;
         }
