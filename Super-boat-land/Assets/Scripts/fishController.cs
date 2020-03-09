@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fishController : MonoBehaviour
-{
+public class fishController : MonoBehaviour {
     public float escapeSpeed;
     private float doubleEscapeSpeed;
     private float negativeEscapeSpeed;
@@ -27,9 +26,13 @@ public class fishController : MonoBehaviour
     private bool resetDirection;
     private float resetTime;
     private bool catched;
+    AudioSource audioSource;
+    public AudioClip stuckSound;
+    public AudioClip caughtSound;
+    public AudioClip escapeSound;
 
-    void Start()
-    {
+
+    void Start() {
         alertRadius = 0.5f;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         escape = false;
@@ -43,51 +46,44 @@ public class fishController : MonoBehaviour
 
         escapeRadius = 3.5f;
         captureRadius = 0.2f;
+        audioSource = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         float d = 0.0f;
         d = Vector3.Distance(transform.position, playerPos.transform.position);
-        if ((d < alertRadius || escape) && !animator.GetBool("isHooked"))
-        {
+        if ((d < alertRadius || escape) && !animator.GetBool("isHooked")) {
             //ENEMY WILL CHASE YOU.
             animator.SetBool("flee", true);
-            if (!escape)
-            {
+            if (!escape) {
                 //fleePosition = -1 * playerPos.position * 1000;
                 moveDirection = new Vector2(transform.position.x - playerPos.position.x, transform.position.y - playerPos.position.y);
                 float sign = (playerPos.position.y > transform.position.y) ? -1.0f : 1.0f;
-                angle = ((Vector2.Angle(Vector2.right, moveDirection) * sign) + 360 ) * Mathf.Deg2Rad;
+                angle = ((Vector2.Angle(Vector2.right, moveDirection) * sign) + 360) * Mathf.Deg2Rad;
             }
             Vector2 patrolTowardsPoint = (new Vector2(transform.position.x, transform.position.y) + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
             transform.position = Vector2.MoveTowards(transform.position, patrolTowardsPoint, 3 * Time.deltaTime);
-            transform.rotation = Quaternion.AngleAxis(angle*Mathf.Rad2Deg+180, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg + 180, Vector3.forward);
             escape = true;
         }
 
         /*
          *  Capture the fish while it will try to escape.
          */
-        if(animator.GetBool("isHooked"))
-        {
+        if (animator.GetBool("isHooked")) {
             //Set 1 time variables here.
-            if(!catched)
-            {
+
+            if (!catched) {
                 playerPos.GetComponent<BoatController>().speed = ogEscapeSpeed * 0.3f;
             }
-            if(resetTime > 0.0f)
-            {
+            if (resetTime > 0.0f) {
                 //Vector2 forward = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle))*-3;
                 //Nåt fel med denna.......... Ser ut att bli fel då skeppet går från pos till neg vice versa.
                 Vector2 patrolTowardsPoint = (new Vector2(transform.position.x, transform.position.y) + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
-                if (!goingIn)
-                {
+                if (!goingIn) {
                     transform.position = Vector2.MoveTowards(transform.position, patrolTowardsPoint, escapeSpeed * Time.deltaTime);
-                }
-                else
-                {
+                } else {
                     transform.position = Vector2.MoveTowards(transform.position, playerPos.position, escapeSpeed * Time.deltaTime);
                 }
 
@@ -95,9 +91,7 @@ public class fishController : MonoBehaviour
                 playerPos.position = Vector2.MoveTowards(playerPos.position, transform.position, escapeSpeed * 0.3f * Time.deltaTime);
                 transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg + 180, Vector3.forward);
                 resetTime -= 0.05f;
-            }
-            else
-            {
+            } else {
                 //float rand = Random.Range(-Mathf.PI/10, Mathf.PI/10);
                 Vector2 tempMoveDir = new Vector2(transform.position.x - playerPos.position.x, transform.position.y - playerPos.position.y);
                 resetTime = Random.Range(2.0f, 10.0f);
@@ -120,29 +114,29 @@ public class fishController : MonoBehaviour
             Vector2 fishDirection = (new Vector2(transform.position.x, transform.position.y) + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle))).normalized;
             float dot = Vector2.Dot(fishDirection, joyStickDirection);
             Debug.Log(dot);
-            if(dot < -0.8f)
-            {
+            if (dot < -0.3f) {
                 //Då dras fisken in.
                 goingIn = true;
                 //escapeSpeed = negativeEscapeSpeed;
-            } else if(dot > 0.0f)
-            {
+            } else if (dot > 0.0f) {
                 goingIn = false;
-                escapeSpeed =  doubleEscapeSpeed;
-            }
-            else
-            {
+                escapeSpeed = doubleEscapeSpeed;
+            } else {
                 goingIn = false;
                 escapeSpeed = ogEscapeSpeed;
             }
             Debug.Log(escapeSpeed);
 
-            if(d > escapeRadius)
-            {
+            if (d > escapeRadius) {
+                if (audioSource != null) {
+                    audioSource.PlayOneShot(escapeSound);
+                }
                 killFish();
             }
-            if(d < captureRadius)
-            {
+            if (d < captureRadius) {
+                if (audioSource != null) {
+                    audioSource.PlayOneShot(caughtSound);
+                }
                 killFish();
             }
             //if(joyStickDirection != Vector2.zero)
@@ -154,19 +148,19 @@ public class fishController : MonoBehaviour
      *  Call this function after fish is either captured or has escaped.
      *  Will happen when he is either close enough or too far away.    
      */
-    void killFish()
-    {
+    void killFish() {
         Destroy(GameObject.FindGameObjectWithTag("Harpoon").GetComponent<HarpoonScript>().getRope());
         Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
         playerPos.GetComponent<BoatController>().speed = playerPos.GetComponent<BoatController>().ogSpeed;
+
         Destroy(this.gameObject);
     }
 
-    public void UnHook()
-    {
+    public void UnHook() {
         playerPos.GetComponent<BoatController>().speed = playerPos.GetComponent<BoatController>().ogSpeed;
         catched = false;
         animator.SetBool("isHooked", false);
         escape = true;
+
     }
 }
