@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     public void UpdateEnemy(float deltaTime)
     {
-        //Debug.Log(Settings + "hej");
         Position = transform.position;
 		//Debug.Log(Settings.CrewManager.getCrew());
 		foreach (Crew crew in Settings.CrewManager.getCrew())
