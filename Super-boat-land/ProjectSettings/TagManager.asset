@@ -7,9 +7,11 @@ TagManager:
   - AudioSource
   - Fish
   - Enemy
+  - Cactus
   - SquidBossTrigger
   - Harpoon
   - Bomb
+  - Crew
   - AOE_Effect
   - Tentacle
   layers:
