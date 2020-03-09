@@ -24,8 +24,9 @@ public class CrewManager : MonoBehaviour
         {
 			
 			crewList.Add(crew);
-			Vector2 randomVector = new Vector2(UnityEngine.Random.Range(-0.5f, 1.0f), UnityEngine.Random.Range(-0.5f, 1.0f));
-			realCrew.Add(Instantiate(crew, randomVector, new Quaternion(0,0,0,0)));
+			//Vector2 randomVector = new Vector2(UnityEngine.Random.Range(-0.5f, 1.0f), UnityEngine.Random.Range(-0.5f, 1.0f));
+			realCrew.Add(Instantiate(crew, crew.transform.position, new Quaternion(0,0,0,0)));
+            crew.transform.position = new Vector2(99999, 99999);
 		}
 		foreach(Crew crew in realCrew){
 			

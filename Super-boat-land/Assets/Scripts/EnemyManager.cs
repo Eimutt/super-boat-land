@@ -27,13 +27,13 @@ public class EnemyManager : MonoBehaviour
 			//Debug.Log(enemy);
 			
 			Vector2 randomVector = new Vector2(UnityEngine.Random.Range(-0.5f, 1.0f), UnityEngine.Random.Range(-0.5f, 1.0f));
-			realEnemies.Add(Instantiate(enemy, randomVector, new Quaternion(0,0,0,0)));
-			
-		}
-		
-		//Debug.Log(settings[0]);
-		//Debug.Log(enemyList);
-		//Debug.Log(GetEnemies());
+			realEnemies.Add(Instantiate(enemy, enemy.transform.position, new Quaternion(0,0,0,0))); //this.gameObject.GetComponent<Enemy>()
+            enemy.transform.Translate(new Vector2(999999, 999999));
+        }
+
+        //Debug.Log(settings[0]);
+        //Debug.Log(enemyList);
+        //Debug.Log(GetEnemies());
     }
 
     // Update is called once per frame
