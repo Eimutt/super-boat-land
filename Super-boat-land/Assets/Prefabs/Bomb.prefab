@@ -101,6 +101,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 2413658572072256219, guid: 1dea6a21b03b9534791cdb9674aa8e12,
     type: 3}
   arcDuration: 2
+  explosionSound: {fileID: 8300000, guid: 73d569ae1337f4d759c109797adbc53e, type: 3}
 --- !u!114 &436680791899837346
 MonoBehaviour:
   m_ObjectHideFlags: 0

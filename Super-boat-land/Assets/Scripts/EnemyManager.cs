@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		realEnemies.RemoveAll(item => item.Equals(null));
 		realEnemies.RemoveAll(item => item == null);
         foreach (Enemy enemy in realEnemies)
         {

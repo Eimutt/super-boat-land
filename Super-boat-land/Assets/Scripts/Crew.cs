@@ -32,7 +32,7 @@ public class Crew : MonoBehaviour
     {
 		Acceleration = Vector2.zero;
 		Acceleration += getAttackForce();
-		//Acceleration += getSeparationForce();
+		Acceleration += getSeparationForce();
 		Velocity += deltaTime * Acceleration;
 		// drag
 		Velocity = Velocity * 0.90f;
@@ -51,7 +51,7 @@ public class Crew : MonoBehaviour
         {
 			float distance = (neighbor.transform.position - transform.position).magnitude;
 			
-			if (distance < Settings.CrewManager.SeparationRadius && distance >0.05f)
+			if (neighbor!= this && distance < Settings.CrewManager.SeparationRadius && distance >0.05f)
 			{
 				Vector2 xyPosition1 = new Vector2(transform.position.x,transform.position.y); 
 				Vector2 xyPosition2 = new Vector2(neighbor.transform.position.x, neighbor.transform.position.y);

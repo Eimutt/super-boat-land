@@ -39,14 +39,17 @@ public class Settings : MonoBehaviour
 		//Debug.Log(EnemyManager);
 		CrewManager = GameObject.FindObjectsOfType<CrewManager>()[0];
 		Inventory = GetComponent<Inventory>();
-		var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		var crew = GameObject.FindGameObjectsWithTag("Crew");
+		
+		//var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		//var crew = GameObject.FindGameObjectsWithTag("Crew");
+		List<Crew> crew = CrewManager.getCrew();
+		List<Enemy> enemies = EnemyManager.GetEnemies();
 		allLandObjects.Add(Captain.gameObject);
-		foreach( GameObject go in enemies){
-			allLandObjects.Add(go);
+		foreach(Enemy go in enemies){
+			allLandObjects.Add(go.gameObject);
 		}
-		foreach( GameObject go in crew){
-			allLandObjects.Add(go);
+		foreach(Crew go in crew){
+			allLandObjects.Add(go.gameObject);
 		}
 		
 		foreach( GameObject go in allLandObjects){

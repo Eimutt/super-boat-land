@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 329695572734699804}
   - component: {fileID: 329695572734699779}
   - component: {fileID: 329695572734699807}
-  - component: {fileID: 307446807}
+  - component: {fileID: 1453062736713085474}
   m_Layer: 0
   m_Name: Captain
   m_TagString: Player
@@ -204,8 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedCoefficient: 1
   Position: {x: 0, y: 0}
-  animator: {fileID: 1453062736713085474, guid: 60af347eb21a99149a8cca2494c8e8fa,
-    type: 3}
+  animator: {fileID: 0}
   facingRight: 1
   enemiesInRange: []
   enemiesKilled: []
@@ -239,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c8bb3344478b54db5b1f5385e5f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &307446807
+--- !u!95 &1453062736713085474
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
