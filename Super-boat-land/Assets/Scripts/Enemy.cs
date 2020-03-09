@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateEnemy(float deltaTime)
     {
-        Debug.Log(Settings + "hej");
+        //Debug.Log(Settings + "hej");
         Position = transform.position;
 		foreach (Crew crew in Settings.CrewManager.getCrew())
 		{
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         if (getHealth() <= 0)
         {
             isAlive = false;
-            Settings.Captain.enemyKilled(this.gameObject);
+            //Settings.Captain.enemyKilled(this.gameObject);
 
             //Destroy(this.gameObject);
             return true;
