@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 4
   attackDelay: 2
-  tentacleSprite: {fileID: 21300000, guid: 48d4446fc394442e1a8fa7beb4d7176d, type: 3}
+  tentacleSprite: {fileID: 21300000, guid: 6d104719ae2214f3cba7526cd4d20c9e, type: 3}
   tentacleDamage: 10
   decorative: 0
 --- !u!212 &1074048133209608261
@@ -86,11 +86,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -999379477
+  m_SortingLayer: -3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.11792451, g: 0.29415143, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 986bd4029e6ca49bea5a0e22ccf9a46f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

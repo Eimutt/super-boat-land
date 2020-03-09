@@ -44,7 +44,7 @@ public class BoatController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
             sceneSwitch.SwitchScene("LandScene", true);
 
-        if (Input.GetKeyDown(KeyCode.Q) && currentHarpoonCD >= maxHarpoonCD) {
+        if (Input.GetKeyDown(KeyCode.Space) && currentHarpoonCD >= maxHarpoonCD) {
             shootHarpoon();
             currentHarpoonCD = 0;
         }
@@ -52,11 +52,9 @@ public class BoatController : MonoBehaviour {
 
     // Shoot harpoon for fishing
     void shootHarpoon() {
-        if (harpoon != null)
-        {
+        if (harpoon != null) {
             harpoon.GetComponent<HarpoonScript>().TryDestroySelf();
-        } else
-        {
+        } else {
             Vector3 directionVector = Vector3.Normalize(latestNonZeroMoveDir);
             print(directionVector);
             harpoon = Instantiate(HarpoonPrefab, transform);

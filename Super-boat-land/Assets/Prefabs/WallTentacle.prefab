@@ -116,6 +116,18 @@ PrefabInstance:
       propertyPath: attackDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1074048133209608260, guid: 54cee9e844fb72341af38109fdf3c6e1,
+        type: 3}
+      propertyPath: tentacleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d104719ae2214f3cba7526cd4d20c9e,
+        type: 3}
+    - target: {fileID: 1074048133209608261, guid: 54cee9e844fb72341af38109fdf3c6e1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 986bd4029e6ca49bea5a0e22ccf9a46f,
+        type: 3}
     - target: {fileID: 1074048133209608262, guid: 54cee9e844fb72341af38109fdf3c6e1,
         type: 3}
       propertyPath: m_IsTrigger
