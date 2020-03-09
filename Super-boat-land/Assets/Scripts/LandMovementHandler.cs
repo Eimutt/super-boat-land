@@ -102,6 +102,7 @@ public class LandMovementHandler : MonoBehaviour {
 
     }
     public List<Enemy> getEnemiesInRange() {
+		enemiesInRange.RemoveAll(item => item == null);
         return enemiesInRange;
     }
     public List<GameObject> getEnemiesDead() {

@@ -51,17 +51,26 @@ public class Settings : MonoBehaviour
 		foreach(Crew go in crew){
 			allLandObjects.Add(go.gameObject);
 		}
-		
+		/*
 		foreach( GameObject go in allLandObjects){
 			Debug.Log(go);
 		}
-		
+		*/
 		
     }
 
     // Update is called once per frame
     void Update()
     {
+		allLandObjects.RemoveAll(item => item == null);
+		foreach(Enemy go in EnemyManager.GetEnemies()){
+			if(!allLandObjects.Contains(go.gameObject))
+				allLandObjects.Add(go.gameObject);
+		}
+		foreach(Crew go in CrewManager.getCrew()){
+			if(!allLandObjects.Contains(go.gameObject))
+				allLandObjects.Add(go.gameObject);
+		}
 		//Debug.Log(BoatController);
         //Debug.Log(EnemyManager);
     }

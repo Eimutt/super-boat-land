@@ -6,7 +6,7 @@ public class CrewManager : MonoBehaviour
 {
     // Start is called before the first frame update
 	private List<Crew> crewList;
-	public float SeparationRadius = 0.15f;
+	public float SeparationRadius = 0.3f;
 	public List<Crew> realCrew;
 	private LandMovementHandler Captain;
 	private Settings settings;

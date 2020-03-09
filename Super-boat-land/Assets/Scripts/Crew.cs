@@ -32,6 +32,7 @@ public class Crew : MonoBehaviour
     {
 		Acceleration = Vector2.zero;
 		Acceleration += getAttackForce();
+		Acceleration += getSeparationForceCrew();
 		Acceleration += getSeparationForce();
 		Velocity += deltaTime * Acceleration;
 		// drag
@@ -44,6 +45,27 @@ public class Crew : MonoBehaviour
 	//public List<Enemy> enemiesInRange = new List<Enemy>();
 	//public List<Enemy> enemiesKilled = new List<Enemy>();
 	Vector2 getSeparationForce(){
+	
+		Vector2 separationForce = Vector2.zero;
+	
+		foreach (GameObject neighbor in Settings.allLandObjects)
+		{
+			float distance = (neighbor.transform.position - transform.position).magnitude;
+		
+			if (neighbor!= this && distance < Settings.CrewManager.SeparationRadius && distance !=0.0f&& !(neighbor.tag == "Crew"))
+			{
+				Vector2 pepsi = new Vector2(this.gameObject.transform.position.x-neighbor.gameObject.transform.position.x,this.gameObject.transform.position.y-neighbor.gameObject.transform.position.y);
+				//Vector2 xyPosition1 = new Vector2(transform.position.x,transform.position.y); 
+				//Vector2 xyPosition2 = new Vector2(neighbor.transform.position.x, neighbor.transform.position.y);
+				//separationForce += ((Settings.CrewManager.SeparationRadius - distance) / distance) * (xyPosition1-xyPosition2);
+				separationForce += ((Settings.CrewManager.SeparationRadius+0.5f - distance) / distance+0.1f) * (pepsi);
+				
+				separationForce = separationForce*5;
+			}
+	}
+		return separationForce;
+	}
+	Vector2 getSeparationForceCrew(){
 		
 		Vector2 separationForce = Vector2.zero;
 		
@@ -51,14 +73,19 @@ public class Crew : MonoBehaviour
         {
 			float distance = (neighbor.transform.position - transform.position).magnitude;
 			
-			if (neighbor!= this && distance < Settings.CrewManager.SeparationRadius && distance >0.05f)
+			if (neighbor!= this && distance < Settings.CrewManager.SeparationRadius && distance !=0.0f&& neighbor.tag == "Crew")
 			{
-				Vector2 xyPosition1 = new Vector2(transform.position.x,transform.position.y); 
-				Vector2 xyPosition2 = new Vector2(neighbor.transform.position.x, neighbor.transform.position.y);
-				separationForce += ((Settings.CrewManager.SeparationRadius - distance) / distance) * (xyPosition1-xyPosition2);
+				Vector2 pepsi = new Vector2(this.gameObject.transform.position.x-neighbor.gameObject.transform.position.x,this.gameObject.transform.position.y-neighbor.gameObject.transform.position.y);
+				//Vector2 xyPosition1 = new Vector2(transform.position.x,transform.position.y); 
+				//Vector2 xyPosition2 = new Vector2(neighbor.transform.position.x, neighbor.transform.position.y);
+				//separationForce += ((Settings.CrewManager.SeparationRadius - distance) / distance) * (xyPosition1-xyPosition2);
+				separationForce += ((Settings.CrewManager.SeparationRadius+0.5f - distance) / distance+0.1f) * (pepsi);
+				Vector2 normal = separationForce;
+				normal.Normalize();
+				separationForce = separationForce + normal*30;
 			}
 		}
-		return separationForce*150;
+		return separationForce;
 	}
 	Vector2 getAttackForce(){
 		Vector2 force = Vector2.zero;
@@ -105,9 +132,12 @@ public class Crew : MonoBehaviour
 		}
 		
 		if (Captain.enemiesInRange.Count == 0 || !attacking){
-			force = Captain.getPosition() - Position;
+			if((Captain.getPosition() - Position).magnitude > 0.3f){
+				force = Captain.getPosition() - Position;
 			
-			force*=5;
+				force*=5;
+			}
+			
 		} else {
 			force *= 10;
 		}

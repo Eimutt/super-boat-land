@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
     {
         //Debug.Log(Settings + "hej");
         Position = transform.position;
+		//Debug.Log(Settings.CrewManager.getCrew());
 		foreach (Crew crew in Settings.CrewManager.getCrew())
 		{
 
