@@ -16,6 +16,7 @@ TagManager:
   - Tentacle
   - DesertIsland
   - GoToBoat
+  - SwampIsland
   layers:
   - Default
   - TransparentFX

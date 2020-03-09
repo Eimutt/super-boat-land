@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScenes/KawajiDesert.unity
     guid: aec61930395c7484a88e0f369521bec9
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/GrassLandFinal.unity
+    guid: 8d2b0cc951f6e4b3a809236051fe0820
   m_configObjects: {}

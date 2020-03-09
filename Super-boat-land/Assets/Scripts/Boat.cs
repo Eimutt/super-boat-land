@@ -32,6 +32,8 @@ public class Boat : MonoBehaviour {
 
         if (other.tag == "DesertIsland") {
             sceneSwitch.SwitchScene("KawajiDesert", true);
+        } else if (other.tag == "SwampIsland") {
+            sceneSwitch.SwitchScene("GrassLandFinal", true);
         }
     }
 }
