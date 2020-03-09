@@ -27,6 +27,14 @@ public class Wind : MonoBehaviour
         direction = other.transform.position - transform.position - sourceDif + extraForce;
         if (!push)
             direction *= -1;
-        other.GetComponent<CustomPhysics>().AddForce(direction, force);
+
+        if (other.tag == "Player")
+        {
+            other.GetComponent<CustomPhysics>().AddForce(direction, force);
+        } else if (other.tag == "Bomb")
+        {
+            print("Moving bomb");
+            other.GetComponent<CustomPhysics>().AddForce(direction, force);
+        }
     }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8634191135008169220}
   - component: {fileID: 8634191135008169221}
   - component: {fileID: 8634191135008169227}
-  - component: {fileID: 683470664}
   - component: {fileID: 683470665}
+  - component: {fileID: 6220930370711718134}
   m_Layer: 0
   m_Name: boat
   m_TagString: Player
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   ogSpeed: 0
-  HarpoonPrefab: {fileID: 2002383884013636966, guid: c6f20ae26f05746bc964db5dc309dcb1,
+  HarpoonPrefab: {fileID: 6560573236023739532, guid: 3963eb6ec72651849bb0b50fbaa438ae,
     type: 3}
 --- !u!114 &8634191135008169227
 MonoBehaviour:
@@ -132,19 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c8bb3344478b54db5b1f5385e5f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &683470664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8634191135008169216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bc165a8d3f53e4d942b3186a366dfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!114 &683470665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +145,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 3
+  player: 1
+--- !u!114 &6220930370711718134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8634191135008169216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf496a209fe68994aad66f60c79beb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100

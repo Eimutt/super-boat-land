@@ -11,6 +11,9 @@ public class Attack : MonoBehaviour
     public float attackPower; //For regular attacks.
     public GameObject ParticleAOE;
 
+    public GameObject AOERing;
+    public float AEORadius;
+
     // Start is called before the first frame update
     void Start()
     {

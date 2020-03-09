@@ -1,20 +1,22 @@
 ﻿Shader "Unlit/AOEEffect"
 {
    Properties{
-        _Color ("Tint", Color) = (0, 0, 0, 1)
+        _Color ("Tint", Color) = (0, 0, 0, 1.0)
         _MainTex ("Texture", 2D) = "white" {}
+        _Radius ("Radius", float) = 1.0
+        _TimeFraction("Input radius", float) = 0.2
     }
 
     SubShader{
         Tags{ 
-            "RenderType"="Transparent" 
-            "Queue"="Transparent"
+            "RenderType"="Opaque" 
+            "Queue"="Geometry+1"
         }
 
         Blend SrcAlpha OneMinusSrcAlpha
-
-        ZWrite off
-        Cull off
+        
+        ZWrite On
+        ZTest LEqual
 
         Pass{
 
@@ -27,7 +29,8 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-
+            float _Radius;
+            float _TimeFraction;
             fixed4 _Color;
 
             struct appdata{
@@ -52,15 +55,11 @@
 
             fixed4 frag(v2f i) : SV_TARGET{
                 //fixed4 col = tex2D(_MainTex, i.uv);
-                fixed4 col = (0.0,0.0,0.0,1.0);
-                float radius = 0.25f;
-                float d = distance(float2(0.5f,0.5f), i.uv);
-                fixed4 circle_outline = step(radius, d) - step(radius+0.01f, d);
-                //col = col * smoothstep(radius, radius+0.1f, d);
-                col = col * circle_outline + step(radius*abs(sin(_Time.y)), d) - step((radius*abs(sin(_Time.y))+0.01f), d);
+                float d = distance(float2(0.5,0.5), i.uv);
+                fixed4 col = (1-step(_Radius, d))*step(_Radius-0.01f, d);
                 
-                //col = 1-col;
-                
+                fixed4 insideCol = 1-step(_Radius*_TimeFraction, d);
+                col += insideCol;
                 
                 return (col)*_Color;
             }

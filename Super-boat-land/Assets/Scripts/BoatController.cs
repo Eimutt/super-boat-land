@@ -66,7 +66,7 @@ public class BoatController : MonoBehaviour {
 
             harpoon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             harpoon.transform.parent = transform.parent;
-            harpoon.GetComponent<Rigidbody2D>().AddForce(harpoonForce * directionVector);
+            harpoon.GetComponent<Rigidbody>().AddForce(harpoonForce * directionVector);
         }
     }
 

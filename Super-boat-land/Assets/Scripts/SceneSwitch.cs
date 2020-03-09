@@ -60,4 +60,9 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.SetActiveScene(scene);
     }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
